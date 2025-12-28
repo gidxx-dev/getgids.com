@@ -1,7 +1,7 @@
 // Configuration:
 // - To enable form submissions to a server (Formspree or another endpoint), set FORM_ENDPOINT to the full URL.
 // - If FORM_ENDPOINT is empty, the form will open the user's mail client as a fallback and also show a demo confirmation.
-const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/your-id"
+const FORM_ENDPOINT = "https://formspree.io/f/mzdbveje"; // e.g. "https://formspree.io/f/your-id"
 
 document.addEventListener("DOMContentLoaded", () => {
   // year
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (FORM_ENDPOINT) {
       note.textContent = "Form submissions are sent to the configured endpoint.";
     } else {
-      note.innerHTML = "Form is in demo mode (no endpoint configured). On submit it will open your email client as a fallback.";
+      note.innerHTML = "";
     }
   }
 

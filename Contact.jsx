@@ -27,7 +27,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const FORM_ENDPOINT = process.env.REACT_APP_FORM_ENDPOINT || "";
+  const FORM_ENDPOINT = process.env.REACT_APP_FORM_ENDPOINT || "https://formspree.io/f/mzdbveje";
 
   const handleChange = (e) => {
     setFormData({
