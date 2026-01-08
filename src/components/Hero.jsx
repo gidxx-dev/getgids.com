@@ -34,7 +34,7 @@ const Hero = () => {
                 Gideons Piano
               </h1>
               <h2 className="text-2xl md:text-3xl text-slate-300 font-medium">
-                Bridging Technology & Creativity
+                Making Technology Work for You
               </h2>
             </motion.div>
 
@@ -44,9 +44,8 @@ const Hero = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-lg text-slate-300 leading-relaxed max-w-xl"
             >
-              I am a <strong>Technical Support professional</strong> who builds
-              <strong> user-friendly websites</strong> and creates
-              <strong> engaging visual content</strong> to solve real-world problems.
+              I help people bring their ideas to life online — with websites and visuals that are intuitive, 
+              engaging, and built to work for you.
             </motion.p>
 
             {/* Social Media & Contact Links */}

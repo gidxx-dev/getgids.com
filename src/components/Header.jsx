@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
+
+
+
+
+
 
 const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,12 +23,20 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id) => {
+  if (location.pathname !== "/") {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  } else {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
-  };
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  setIsMobileMenuOpen(false);
+};
+
 
   return (
     <header
@@ -60,9 +76,9 @@ const Header = () => {
               Skills
             </button>
             <button
-              onClick={() => scrollToSection("FAQs")}
+              onClick={() => navigate("/faqs")}
               className="text-slate-700 hover:text-blue-600 transition-colors font-medium"
-            >
+            > 
               FAQs
             </button>
             <Button
@@ -90,24 +106,6 @@ const Header = () => {
               className="text-slate-700 hover:text-blue-600 transition-colors font-medium text-left"
             >
               About
-            </button>
-            <button
-              onClick={() => scrollToSection("experience")}
-              className="text-slate-700 hover:text-blue-600 transition-colors font-medium text-left"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="text-slate-700 hover:text-blue-600 transition-colors font-medium text-left"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("education")}
-              className="text-slate-700 hover:text-blue-600 transition-colors font-medium text-left"
-            >
-              Education
             </button>
             <Button
               onClick={() => scrollToSection("contact")}

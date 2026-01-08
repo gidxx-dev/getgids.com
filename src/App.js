@@ -1,17 +1,17 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
 import HomePage from "./Pages/HomePage";
-
-
+import FAQPage from "./Pages/FAQPage";
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-          <div className="min-h-screen bg-slate-50">
-            <HomePage />
-          </div>
-        ;
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/faqs" element={<FAQPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

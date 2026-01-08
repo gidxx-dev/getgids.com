@@ -1,5 +1,6 @@
 import React from "react";
 import { Linkedin, Facebook, Instagram, Heart } from "lucide-react";
+import { motion } from "framer-motion"; // added for smooth hover effects
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,7 +17,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About Column */}
-          <div>
+          <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-4">Gideons Piano</h3>
             <p className="text-slate-400 leading-relaxed">
               Technical Support Professional specializing in troubleshooting,
@@ -25,13 +26,14 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Column */}
-          <div>
+          <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => scrollToSection("about")}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
+                  aria-label="Go to About section"
                 >
                   About
                 </button>
@@ -40,6 +42,7 @@ const Footer = () => {
                 <button
                   onClick={() => scrollToSection("experience")}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
+                  aria-label="Go to Services section"
                 >
                   Services
                 </button>
@@ -48,6 +51,7 @@ const Footer = () => {
                 <button
                   onClick={() => scrollToSection("skills")}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
+                  aria-label="Go to Skills section"
                 >
                   Skills
                 </button>
@@ -56,6 +60,7 @@ const Footer = () => {
                 <button
                   onClick={() => scrollToSection("contact")}
                   className="text-slate-400 hover:text-blue-400 transition-colors"
+                  aria-label="Go to Contact section"
                 >
                   Contact
                 </button>
@@ -67,33 +72,32 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Connect</h3>
             <div className="flex gap-4 mb-4">
-              <a
-                href="https://www.linkedin.com/in/gideons-piano-0ab179154/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-slate-800 hover:bg-blue-600 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://facebook.com/gidxx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-slate-800 hover:bg-blue-600 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://instagram.com/gdnspn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-slate-800 hover:bg-blue-600 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
+              {[{
+                icon: <Linkedin size={20} />,
+                url: "https://www.linkedin.com/in/gideons-piano-0ab179154/",
+                label: "LinkedIn"
+              },{
+                icon: <Facebook size={20} />,
+                url: "https://facebook.com/gidxx",
+                label: "Facebook"
+              },{
+                icon: <Instagram size={20} />,
+                url: "https://instagram.com/gdnspn",
+                label: "Instagram"
+              }].map(({icon, url, label}) => (
+                <motion.a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-800 text-white p-3 rounded-full"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label={label}
+                >
+                  {icon}
+                </motion.a>
+              ))}
             </div>
             <p className="text-slate-400">
               <a
@@ -103,6 +107,14 @@ const Footer = () => {
                 gideonspiano11@gmail.com
               </a>
             </p>
+
+            {/* Optional CTA Button */}
+            <a
+              href="#contact"
+              className="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300"
+            >
+              Let’s Work Together
+            </a>
           </div>
         </div>
 

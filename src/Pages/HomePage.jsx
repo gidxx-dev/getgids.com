@@ -6,8 +6,8 @@ import Skills from "../components/Skills";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Services from "../components/Services";
-import Testimonials from "../components/Testimonials"
-import WhyMe from "../components/WhyMe"
+import Testimonials from "../components/Testimonials";
+import WhyMe from "../components/WhyMe";
 
 
 const HomePage = () => {
