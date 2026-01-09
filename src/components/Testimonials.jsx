@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "./ui/card";
 import { QuoteIcon } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -21,68 +22,108 @@ const testimonials = [
     tag: "Web Development",
   },
   {
-    name: "Michael Reyes",
-    role: "Content Creator",
-    company: "Freelance",
+    name: "Ma. Angela Sundiam",
+    role: "WFM Real-Time Analyst",
+    company: "Foundever Inc.",
     feedback:
-      "Excellent video and photo editing skills. He understands instructions well and always delivers on time.",
-    tag: "Creative Services",
+      "We worked closely together for three years, supporting all channels under one team. Gideons consistently demonstrated professionalism, reliability, and strong technical skills.",
+    tag: "Software Support",
   },
 ];
+
+// Animation variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-20 bg-slate-50">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Client Feedbacks
+            Kind Words From Kind Clients
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            What clients say about working with me
+            What clients say working with me
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+        >
           {testimonials.map((testimonial, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-8 hover:shadow-xl transition-all duration-300 border-t-4 border-t-blue-600"
+              variants={cardVariants}
+              whileHover={{ y: -6 }}
             >
-              <div className="flex flex-col h-full">
-                {/* Quote Icon */}
-                <div className="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                  <QuoteIcon className="text-blue-600" size={28} />
-                </div>
+              <Card className="p-8 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-shadow">
+                <div className="flex flex-col h-full">
+                  {/* Quote Icon */}
+                  <div className="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                    <QuoteIcon className="text-blue-600" size={28} />
+                  </div>
 
-                {/* Feedback */}
-                <p className="text-slate-600 mb-6 leading-relaxed flex-1">
-                  “{testimonial.feedback}”
-                </p>
-
-                {/* Client Info */}
-                <div className="border-t pt-4">
-                  <h3 className="font-bold text-slate-900">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-slate-500">
-                    {testimonial.role} • {testimonial.company}
+                  {/* Feedback */}
+                  <p className="text-slate-600 mb-6 leading-relaxed flex-1">
+                    “{testimonial.feedback}”
                   </p>
 
-                  <Badge
-                    variant="outline"
-                    className="mt-3 bg-white text-slate-700 border-slate-300"
-                  >
-                    {testimonial.tag}
-                  </Badge>
+                  {/* Client Info */}
+                  <div className="border-t pt-4">
+                    <h3 className="font-bold text-slate-900">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm text-slate-500">
+                      {testimonial.role} • {testimonial.company}
+                    </p>
+
+                    <Badge
+                      variant="outline"
+                      className="mt-3 bg-white text-slate-700 border-slate-300"
+                    >
+                      {testimonial.tag}
+                    </Badge>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

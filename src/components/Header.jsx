@@ -5,9 +5,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 
 
-
-
-
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();

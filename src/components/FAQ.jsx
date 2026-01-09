@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "What tools or software are you skilled in?",
     answer:
-      "For technical support: ticketing systems and troubleshooting tools.\nFor web: HTML, CSS, WordPress.\nFor creative work: Photoshop, Canva, Premiere Pro, Figma.",
+      "For technical support: Ticketing systems and case management systems like Salesforce, Zendesk, SAP-ECC.\nFor web: HTML, CSS, ReactJS, Tailwind CSS.\nFor creative work: Adobe Lightroom, Adobe Photoshop, Canva, Capcut, Vegas Pro, .",
   },
   {
     question: "How do you approach a new project?",
