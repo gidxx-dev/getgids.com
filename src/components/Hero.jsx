@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Facebook, Instagram, Mail, Phone, Github } from "lucide-react";
+import { Linkedin, Facebook, Instagram, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -7,8 +7,6 @@ const socialLinks = [
   { icon: <Facebook size={20} />, url: "https://facebook.com/gidxx", name: "Facebook" },
   { icon: <Instagram size={20} />, url: "https://instagram.com/gdnspn", name: "Instagram" },
   { icon: <Github size={20} />, url: "https://github.com/gidxx-dev", name: "GitHub" },
-  { icon: <Mail size={20} />, url: "mailto:youremail@example.com", name: "Email" },
-  { icon: <Phone size={20} />, url: "tel:+639XXXXXXXXX", name: "Phone" },
 ];
 
 const Hero = () => {
@@ -44,8 +42,8 @@ const Hero = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-lg text-slate-300 leading-relaxed max-w-xl"
             >
-              I help people bring their ideas to life online — with websites and visuals that are intuitive, 
-              engaging, and built to work for you.
+              From solving tech problems to building intuitive websites, 
+              I help ideas work online — reliably, efficiently, and stress-free.
             </motion.p>
 
             {/* Social Media & Contact Links */}
@@ -80,19 +78,43 @@ const Hero = () => {
             </motion.div>
 
             {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="pt-6"
-            >
-              <a
-                href="#contact"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
-              >
-                Let’s Work Together
-              </a>
-            </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
+                    className="pt-6 flex flex-horizontal items-start gap-3.5" // change flex-wrap -> flex-col and items-center -> items-start
+                  >
+                    <a
+                      href="#contact"
+                      className="
+                        inline-block
+                        bg-blue-600 hover:bg-blue-700
+                        text-white
+                        px-8 py-3
+                        rounded-full
+                        font-semibold
+                        transition-all duration-300
+                      "
+                    >
+                      Let’s Work Together
+                    </a>
+
+                    <a
+                      href="/resume/Gideons-Piano-Resume.pdf"
+                      className="
+                        inline-block
+                        bg-blue-600 hover:bg-blue-700
+                        text-white
+                        px-8 py-3
+                        rounded-full
+                        font-semibold
+                        transition-all duration-300
+                      
+                      "
+                    >
+                      Download my CV (PDF)
+                    </a>
+                  </motion.div>
           </div>
 
           {/* Right Column - Photo */}
@@ -106,7 +128,7 @@ const Hero = () => {
               ></motion.div>
 
               <motion.img
-                src="https://customer-assets.emergentagent.com/job_gideontech/artifacts/t2xkioow_511007777_24442161515410074_3661924069600662694_n.jpg"
+                src="/images/511007777_24442161515410074_3661924069600662694_n.jpg" // note the leading slash
                 alt="Portrait of Gideons Piano, Web Developer"
                 className="relative rounded-2xl shadow-2xl w-full max-w-md object-cover border-4 border-white"
                 whileHover={{ scale: 1.05 }}

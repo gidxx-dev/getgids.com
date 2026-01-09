@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -15,32 +16,12 @@ const faqs = [
   {
     question: "What services do you offer?",
     answer:
-      "I offer technical support, IT solutions, website development, and creative services like photo and video editing. I focus on delivering practical solutions that make technology simple for clients.",
+      "I offer technical support, IT solutions, website development, and creative services like photo and video editing.",
   },
   {
     question: "What tools or software are you skilled in?",
     answer:
-      "For technical support: Ticketing systems and case management systems like Salesforce, Zendesk, SAP-ECC.\nFor web: HTML, CSS, ReactJS, Tailwind CSS.\nFor creative work: Adobe Lightroom, Adobe Photoshop, Canva, Capcut, Vegas Pro, .",
-  },
-  {
-    question: "How do you approach a new project?",
-    answer:
-      "I start by understanding your problem or goal, plan the steps, and execute with clear communication throughout. I tailor my approach based on whether it’s IT, web, or creative work.",
-  },
-  {
-    question: "What is your typical turnaround time?",
-    answer:
-      "It depends on the project scope. Small tasks can take a day or two, while larger projects like websites or case-study implementations may take a week or more.",
-  },
-  {
-    question: "Can you provide examples of your past work?",
-    answer:
-      "Absolutely! My Experience / Case Studies section shows projects I’ve worked on, detailing the Situation, Task, Action, and Result for each. I also include screenshots or visuals for web and creative projects.",
-  },
-  {
-    question: "Do you offer support after project delivery?",
-    answer:
-      "Yes! I provide follow-up assistance and troubleshooting to ensure your solution works smoothly after launch.",
+      "For support: Salesforce, Zendesk, SAP-ECC.\nFor web: HTML, CSS, ReactJS, Tailwind.\nFor creative: Photoshop, Lightroom, Canva, Capcut.",
   },
 ];
 
@@ -52,38 +33,63 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faqs" className="bg-slate-50 py-16">
+    <motion.section
+      id="faqs"
+      className="bg-slate-50 py-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           Frequently Asked Questions
         </h2>
+
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-slate-200 rounded-lg overflow-hidden"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-slate-100 transition-colors font-medium text-left"
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={index}
+                className="border border-slate-200 rounded-lg overflow-hidden bg-white"
               >
-                {faq.question}
-                {openIndex === index ? (
-                  <ChevronUp size={20} />
-                ) : (
-                  <ChevronDown size={20} />
-                )}
-              </button>
-              {openIndex === index && (
-                <div className="px-6 py-4 bg-slate-50 text-slate-700 whitespace-pre-line">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          ))}
+                {/* Question */}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex justify-between items-center px-6 py-4 hover:bg-slate-100 transition-colors font-medium text-left"
+                >
+                  {faq.question}
+
+                  <motion.span
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown size={20} />
+                  </motion.span>
+                </button>
+
+                {/* Answer */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="px-6 bg-slate-50 text-slate-700 whitespace-pre-line overflow-hidden"
+                    >
+                      <div className="py-4">{faq.answer}</div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

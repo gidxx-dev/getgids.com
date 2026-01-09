@@ -26,7 +26,7 @@ const testimonials = [
     role: "WFM Real-Time Analyst",
     company: "Foundever Inc.",
     feedback:
-      "We worked closely together for three years, supporting all channels under one team. Gideons consistently demonstrated professionalism, reliability, and strong technical skills.",
+      "We worked closely together for 3 years, supporting all channels under one team. Gideons consistently demonstrated professionalism, reliability, and strong technical skills. It was really a pleasure working with him.",
     tag: "Software Support",
   },
 ];
