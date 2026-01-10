@@ -3,9 +3,8 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Mail, MapPin, Send, Linkedin, Facebook, Instagram, GithubIcon } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Linkedin, Facebook, Instagram, GithubIcon } from "lucide-react";
 import { useToast } from "./hooks/use-toast";
-
 
 const Contact = () => {
   const { toast } = useToast();
@@ -61,6 +60,7 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Contact Information */}
           <div className="space-y-6">
+            {/* Email Card */}
             <Card className="p-6 bg-slate-50 border-none">
               <div className="flex items-start gap-4">
                 <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -78,6 +78,25 @@ const Contact = () => {
               </div>
             </Card>
 
+            {/* Phone Card */}
+            <Card className="p-6 bg-slate-50 border-none">
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="text-blue-600" size={20} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-1">Phone</h3>
+                  <a
+                    href="tel:+639171234567"
+                    className="text-blue-600 hover:text-blue-700 transition-colors"
+                  >
+                    +63 917 123 4567
+                  </a>
+                </div>
+              </div>
+            </Card>
+
+            {/* Location Card */}
             <Card className="p-6 bg-slate-50 border-none">
               <div className="flex items-start gap-4">
                 <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">

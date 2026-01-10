@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "John Doe",
-    role: "Startup Founder",
-    company: "Tech Solutions Inc.",
+    name: "Mary Strawn",
+    role: "Senior Accountant",
+    company: "Quantum Accounting Services Inc.",
     feedback:
       "Gideons was incredibly professional and responsive. He solved our technical issues quickly and delivered exactly what we needed. Highly recommended!",
     tag: "Technical Support",
