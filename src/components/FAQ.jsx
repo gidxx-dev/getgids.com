@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "What tools or software are you skilled in?",
     answer:
-      "For support: Salesforce, Zendesk, SAP-ECC.\nFor web: HTML, CSS, ReactJS, Tailwind.\nFor creative: Photoshop, Lightroom, Canva, Capcut.",
+      "For support: Salesforce, QuickBooks Desktop, Zendesk, SAP-ECC.\nFor web: HTML, CSS, ReactJS, Tailwind.\nFor creative: Photoshop, Lightroom, Canva, Capcut.",
   },
 ];
 

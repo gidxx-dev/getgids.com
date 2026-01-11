@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Facebook, Instagram, Heart } from "lucide-react";
+import { Linkedin, Facebook, Instagram,} from "lucide-react";
 import { motion } from "framer-motion"; // added for smooth hover effects
 
 const Footer = () => {
@@ -119,11 +119,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-8 text-center">
-          <p className="text-slate-400 flex items-center justify-center gap-2">
-            © {currentYear} Gideons Piano. Made with{" "}
-            <Heart className="text-red-500" size={16} fill="currentColor" /> for
-            connecting professionals.
+                <div className="border-t border-slate-800 pt-8 text-center">
+          <p className="text-slate-400">
+            © {currentYear} Gideons Piano. All rights reserved. Built for connecting professionals.
           </p>
         </div>
       </div>
